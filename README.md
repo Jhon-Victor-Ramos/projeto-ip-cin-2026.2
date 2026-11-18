@@ -51,7 +51,7 @@ A metologia ágil escolhida foi Scrum
 | **Jhon Victor Ramos Martins** | [@Jhon-Victor-Ramos](https://github.com/Jhon-Victor-Ramos) | [LinkedIn](www.linkedin.com/in/jhon-victor-ramos) ; [Instagram](https://www.instagram.com/jhonvictor_dev?vrfl=cGEyZGp5N3Nyd2M4) | xxxx |
 | **Maria Luiza da Silva Nascimento** | [@mlsn-stack](https://www.google.com/search?q=https://github.com/mlsn-stack) | [LinkedIn](https://www.google.com/search?q=https://www.linkedin.com/in/luiza-nascimento-1b8b96346) | yyyy |
 | **Clarice** | [@ccfsp](https://github.com/ccfsp) | [Linkedin](http://www.linkedin.com/in/claricecarvalhof) | wwww |
-| **Juan** | [@juanvgoes](https://github.com/juanvgoes) | [LinkedIn](https://www.linkedin.com/in/juangoes/) | zzzz |
+| **Juan** | [@juanvgoes](https://github.com/juanvgoes) | [LinkedIn](https://www.linkedin.com/in/juangoes/) ; [Instagram](https://www.instagram.com/juanvinicius.goes) | zzzz | 
 | **Guilherme** | [guilhermeunderthestars](https://github.com/guilhermeunderthestars) | [LinkedIn](https://www.linkedin.com/in/guilherme-sim%C3%B5es-santos-800b2a44b/) | aaaa |
 
 ### Divisão do trabalho:
