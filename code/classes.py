@@ -34,9 +34,13 @@ class ObjetoDeJogo:
 
         self._pos_atual = coordenadas
 
-    def get_pos(self) -> tuple[float,float]: #Retorna as coordenadas atuais para evitar alterá-las
+    def get_pos(self) -> tuple[float,float]: #Retorna as coordenadas atuais para evitar alterá-las. Depende do modo
 
         return self._pos_atual
+
+    def get_center_pos(self) ->tuple[float,float]: #Retorna as coordenadas atuais do centro
+
+        return self.retangulo().center
 
     def retangulo(self) -> pygame.Rect: #Cria um retângulo envolto na superfície. O modo determina qual ponto do retângulo serve de âncora
 
@@ -84,15 +88,15 @@ class ObjetoDeJogo:
 
         self._modo = novo_modo
 
-    def checar_colisao(self, outro:ObjetoDeJogo | tuple[float, float]) -> bool: #Recebe outro objeto de jogo ou uma coordenada, e checa se há colisão com este retângulo ou ponto
+    def checar_colisao(self, rect_point:pygame.Rect | tuple[float, float]) -> bool: #Recebe outro objeto de jogo ou uma coordenada, e checa se há colisão com este retângulo ou ponto
 
-        if isinstance(outro, ObjetoDeJogo):
+        if isinstance(rect_point, pygame.Rect):
 
-            return bool(self.retangulo().colliderect(outro.retangulo()))
+            return bool(self.retangulo().colliderect(rect_point))
 
-        elif isinstance(outro, tuple):
+        elif isinstance(rect_point, tuple):
 
-            return bool(self.retangulo().collidepoint(outro[0], outro[1]))
+            return bool(self.retangulo().collidepoint(rect_point))
 
 class Jogador(ObjetoDeJogo): #Classe filha de Objeto de Jogo. Possui velocidades e um método para movimentação
 
@@ -104,13 +108,23 @@ class Jogador(ObjetoDeJogo): #Classe filha de Objeto de Jogo. Possui velocidades
 
         self._velocidade_horizontal:float = 0
 
-        self._velocidade_pulo:float = (-1) * velocidade_pulo
+        self._velocidade_pulo:float = velocidade_pulo #Note que um pulo para cima tem que usar a negação deste valor
 
         self._velocidade_vertical:float = 0
 
     def mover(self) -> None:
 
         self._pos_atual = (self._pos_atual[0] + self._velocidade_horizontal, self._pos_atual[1] + self._velocidade_vertical)
+
+    def mover_horizontal(self) -> None: #Método para movimentar apenas no eixo horizontal
+
+        self._pos_atual = (self._pos_atual[0] + self._velocidade_horizontal, self._pos_atual[1])
+
+    def mover_vertical(self) -> None: #Método para movimentar apenas no eixo vertical
+
+        self._pos_atual = (self._pos_atual[0], self._pos_atual[1] + self._velocidade_vertical)
+
+    #Separar a movimentação em dois instantes diferentes facilita muito checar e lidar com colisões
 
 class Bloco(ObjetoDeJogo): #Classe filha de Objeto de Jogo. Possui um método para empurrar outros objetos que colidem consigo, servindo como chãos e paredes
 
@@ -144,5 +158,39 @@ class Bloco(ObjetoDeJogo): #Classe filha de Objeto de Jogo. Possui um método pa
             outro_objeto.atualizar_pos((outro_pos[0], outro_pos[1] - distancias['cima']))
 
         elif distancia_minima == 'baixo':
+
+            outro_objeto.atualizar_pos((outro_pos[0], outro_pos[1] + distancias['baixo']))
+
+    def empurrar_horizontal(self, outro_objeto:Jogador) -> None: 
+
+        '''Método de empurrar, mas apenas com as direções horizontais. 
+        Por isso, é possível utilizar apenas a direção da velocidade para saber
+        para que direção o jogador deve ser empurrado'''
+
+        outro_pos:tuple[float,float] = outro_objeto.get_pos()
+
+        distancias:dict = {'esquerda': abs(outro_objeto.retangulo().right - self.retangulo().left),
+                            'direita': abs(outro_objeto.retangulo().left - self.retangulo().right),}
+        
+        if outro_objeto._velocidade_horizontal > 0:
+
+            outro_objeto.atualizar_pos((outro_pos[0] - distancias['esquerda'], outro_pos[1]))
+
+        elif outro_objeto._velocidade_horizontal < 0:
+
+            outro_objeto.atualizar_pos((outro_pos[0] + distancias['direita'], outro_pos[1]))
+
+    def empurrar_vertical(self, outro_objeto:Jogador) -> None: #Mesma coisa só que verticalmente
+
+        outro_pos:tuple[float,float] = outro_objeto.get_pos()
+
+        distancias:dict = {'cima': abs(outro_objeto.retangulo().bottom - self.retangulo().top), 
+                           'baixo': abs(outro_objeto.retangulo().top - self.retangulo().bottom)}
+
+        if outro_objeto._velocidade_vertical > 0:
+
+            outro_objeto.atualizar_pos((outro_pos[0], outro_pos[1] - distancias['cima']))
+
+        elif outro_objeto._velocidade_vertical < 0:
 
             outro_objeto.atualizar_pos((outro_pos[0], outro_pos[1] + distancias['baixo']))
