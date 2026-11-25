@@ -52,7 +52,8 @@ A metologia ágil escolhida foi Scrum
 | **Maria Luiza da Silva Nascimento** | [@mlsn-stack](https://github.com/mlsn-stack) | [LinkedIn](https://www.linkedin.com/in/luiza-nascimento-1b8b96346/) | yyyy |
 | **Clarice** | [@ccfsp](https://github.com/ccfsp) | [Linkedin](http://www.linkedin.com/in/claricecarvalhof) | wwww |
 | **Juan** | [@juanvgoes](https://github.com/juanvgoes) | [LinkedIn](https://www.linkedin.com/in/juangoes/) ; [Instagram](https://www.instagram.com/juanvinicius.goes) | zzzz | 
-| **Guilherme** | [guilhermeunderthestars](https://github.com/guilhermeunderthestars) | [LinkedIn](https://www.linkedin.com/in/guilherme-sim%C3%B5es-santos-800b2a44b/) | aaaa |
+| **Guilherme** | [@guilhermeunderthestars](https://github.com/guilhermeunderthestars) | [LinkedIn](https://www.linkedin.com/in/guilherme-sim%C3%B5es-santos-800b2a44b/) | aaaa |
+| **Samuel Galdino** | [@leumashmmn](https://github.com/leumashmmn) | [LinkedIn](https://www.linkedin.com/in/samuelgaldino/) | jjjj |
 
 ### Divisão do trabalho:
 A equipe decidiu dividir-se em 3 frentes flexíveis. Ou seja, cada um é, inicialmente, designado para uma determinada área — com base no que se consideram mais íntimos —, mas podem transitar livremente entre elas, para que tenham contato com todas as partes e todo o processo do desenvolvimento de um *software*.
