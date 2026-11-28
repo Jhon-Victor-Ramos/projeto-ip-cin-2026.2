@@ -1,11 +1,12 @@
+from .jogador import Jogador
+from .objeto_jogo import ObjetoDeJogo
+
 class Bloco(ObjetoDeJogo): #Classe filha de Objeto de Jogo. Possui um método para empurrar outros objetos que colidem consigo, servindo como chãos e paredes
 
     def __init__(self, pos_inicial:tuple[float,float], comprimento:float, altura:float, modo:str):
-
         super().__init__(pos_inicial, comprimento, altura, modo)
 
     def empurrar(self, outro_objeto:ObjetoDeJogo) -> None: 
-
         #Este método verifica a distância que outro objeto de jogo teria que ser movido para parar de colidir com este bloco, e decide baseado na menor distância. Sempre verifique que uma colisão está ocorrendo antes de chamar este método
 
         outro_pos:tuple[float,float] = outro_objeto.get_pos()

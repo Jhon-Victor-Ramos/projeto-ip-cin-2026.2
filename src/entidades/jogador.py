@@ -1,4 +1,4 @@
-import ObjetoDeJogo
+from .objeto_jogo import ObjetoDeJogo
 
 class Jogador(ObjetoDeJogo): #Classe filha de Objeto de Jogo. Possui velocidades e um método para movimentação
 

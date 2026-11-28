@@ -95,3 +95,4 @@ class ObjetoDeJogo:
         elif isinstance(rect_point, tuple):
 
             return bool(self.retangulo().collidepoint(rect_point))
+
